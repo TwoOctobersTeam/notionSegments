@@ -1,0 +1,252 @@
+<div id="explorerForm">
+    <h2 style="font-size: 2.5em;font-weight: bold; padding-bottom: 1em;">TO Explorer Calculated Field Builder</h2>
+     <div class="elementor-row">
+         
+          <ol id="directions">
+
+        <li><strong>Paste in the New Explorer Data Studio Report URL: (required) <br> <span style="font-size: 0.75em">example:
+                    https://datastudio.google.com/u/0/reporting/xxxxxx-31cb-4xxxx-9acf-xxxxxxxx4847/page/q8oSC/edit</span></strong>
+                <input id="report" tabindex="1" type="text" style="width: 100%" /></p></li>
+                        <li><strong>Hit the 'Tab' key</strong></li></ol></div>
+
+    <div class="elementor-row">
+          <div class="elementor-column elementor-col-100"  data-element_type="column">
+
+    <p><button class="select" type="button" tabindex="4" style="margin-bottom: 1em">Copy Root Code</button> <textarea
+            id="root" class="select hiddenTextarea" readonly="readonly"  rows="1" >	</textarea></p></div>
+                      <div class="elementor-column elementor-col-100"  data-element_type="column">
+ 
+    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Trending Code</button> <textarea
+            id="trending" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
+            
+            <div class="elementor-column elementor-col-100"  data-element_type="column">
+    
+    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Trending Pages Code</button> <textarea
+            id="pageexplorer" class="select hiddenTextarea" readonly="readonly" rows="1" >	</textarea></p></div></div>
+            
+
+              <div class="elementor-row">           <div class="elementor-column elementor-col-100"  data-element_type="column"> 
+     <p><button class="select" type="button" tabindex="8" style="margin-bottom: 1em">Copy Check Serps Code</button> <textarea
+            id="checkSerps" class="select hiddenTextarea" readonly="readonly" rows="1">HYPERLINK(CONCAT("https://google.com/search?q=",REGEXP_REPLACE(query,' ','+')),"🔎SERPS")</textarea></p>
+
+</div>
+<div class="elementor-column elementor-col-100"  data-element_type="column">
+      
+       
+     <p><button class="select" type="button" tabindex="10" style="margin-bottom: 1em">Copy Image Serps Code</button> <textarea
+            id="checkQuora" class="select hiddenTextarea" readonly="readonly" rows="1" >HYPERLINK(CONCAT("https://google.com/search?q=",REGEXP_REPLACE(Query,' ','+'),"&tbm=isch"),"🔎Images")</textarea></p>
+       </div>
+
+      <div class="elementor-column elementor-col-100"  data-element_type="column">   
+     <p><button class="select" type="button" tabindex="10" style="margin-bottom: 1em">Copy Quora Code</button> <textarea
+            id="checkQuora" class="select hiddenTextarea" readonly="readonly" rows="1" >HYPERLINK(CONCAT("https://www.quora.com/search?q=",REGEXP_REPLACE(query,' ','%20')),IMAGE("https://upload.wikimedia.org/wikipedia/commons/2/2c/Quora_icon.png","Q"))</textarea></p>
+
+</div> 
+
+<div class="elementor-column elementor-col-100"  data-element_type="column">   
+     <p><button class="select" type="button" tabindex="9" style="margin-bottom: 1em">Copy Reddit Code</button> <textarea
+            id="checkReddit" class="select hiddenTextarea" readonly="readonly"  rows="1">HYPERLINK(CONCAT("https://www.reddit.com/search/?q=",REGEXP_REPLACE(query,' ','%20')),IMAGE("https://external-preview.redd.it/iDdntscPf-nfWKqzHRGFmhVxZm4hZgaKe5oyFws-yzA.png?auto=webp&s=38648ef0dc2c3fce76d5e1d8639234d8da0152b2","Q"))</textarea></p>
+
+</div>
+
+</div>
+
+    <ol start="3" id="directions">
+
+
+        <li><strong>Click 'copy root code' button above.</strong> Create a new calculated field in the _ROOT datasource called: 'topic explorer link' and paste the code into the field's textarea. Click Save. 
+        <br><em>This field will allow you to switch from the Root Queries Page to the Topic Explorer Page.</em> </li>
+         <li><strong>Click 'copy trending code' button above. </strong>  Create a new calculated field in the _TRENDING datasource called: 'topic explorer link' and paste the code into the field's textarea. Click Save.
+         <br><em>This field will allow you to switch from the Trending Queries Page to the Topic Explorer Page.</em> </li>
+         <li><strong>Click 'copy trending pages code' button above.</strong>  
+         Create a new calculated field in the _TRENDING_PAGES datasource called: 'page explorer link' and paste the code into the field's textarea. Click Save.
+         <br><em>This field will allow you to switch from the Trending Pages Page to the Topic Explorer Page.</em> </li>
+          <li><strong>Click 'copy check serps code' button above.</strong> 
+          Create a new calculated field in the _PAGE datasource called: 'check serps' and paste the code into the field's textarea. Click Save.
+
+         <br><em>This field will allow you to look in the serps for this particular query.</em> </li>
+         <li><strong>Click 'copy image serps code' button above. </strong> 
+         Create a new calculated field in the _PAGE datasource called: 'check image serps' and paste the code into the field's textarea. Click Save.
+         <br><em>This field will allow you to look in the images tab of google search results for this particular query.</em> </li>
+         <li><strong>Click 'copy quora code' button above.</strong> 
+         Create a new calculated field in the _PAGE datasource called: 'Q' and paste the code into the field's textarea. Click Save.
+         <br><em>This field will allow you to look in Quora for how folks talk about this query.</em> </li>
+         <li><strong>Click 'copy reddit code' button above.</strong> 
+          Create a new calculated field in the _PAGE datasource called: 'R' and paste the code into the field's textarea. Click Save.
+
+         <br><em>This field will allow you to look in Reddit for how folks talk about this query.</em> </li>
+    </ol>
+
+
+    <style>
+        .hidden {
+            display: none;
+        }
+        .elementor-column.elementor-col-100,.elementor-column.elementor-col-50 {padding: 10px 5px 10px 40px!important;display: block;}
+        .elementor-column.elementor-col-100 h3 {width: 100%;clear: both;}
+         .elementor-column.elementor-col-100 p button {width: 100%;clear: both;}
+         #directions li {margin-bottom: 0.5em;}
+    </style>
+
+    <script>
+        jQuery(function ($) {
+
+            $("button.select").click(function () {
+
+                $(this).closest('p').find('textarea').select();
+                document.execCommand('copy');
+                $(this).html("copied!");
+            });
+
+            function update() {
+
+                var reportUrl = $("#report").val() ? $("#report").val().trim() : '';
+
+                var reportId = reportUrl.split('reporting/')[1].split('/page/')[0];
+                console.log(reportId);
+
+                var rootLink =
+                    `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580PT%25EE%2580%2580',root_term,'"%7D'),root_term)`;
+                console.log(rootLink);
+
+                var trendingLink =
+                    `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',query ,'"%7D'),'Explore the selected Query in Topic Explorer)`;
+                console.log(trendingLink);
+                var pageExplorerLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),'Explore the selected Page in Page Explorer')`;
+
+                var gmbIn = $('#gmbField').val() ? $('#gmbField').val().trim() : '';
+                var brandIn = $('#brandField').val() ? $('#brandField').val().trim().toLowerCase() : '';
+if (gmbIn===''){}
+else{
+                var gmbArrIn = gmbIn.indexOf('::') ? gmbIn.split('::') : gmbIn;
+                if (gmbArrIn === gmbIn) {
+                    var gmbArr = [];
+                    gmbArr.push(gmbArrIn)
+                    console.log("gmbArr inside check for gmbArrIn === gmbIn: ", gmbArr)
+                } else {
+                    var gmbArr = [...gmbArrIn];
+                    console.log("gmbArr inside else", gmbArr)
+                }
+                console.log("gmbArr length: ", gmbArr.length);
+                if (gmbArr.length === 1) {
+
+                    var gmbPattern = `Case`;
+
+                    var row = gmbArr[0];
+
+                    var prop = row.split('=')[0];
+                    var valuesIn = row.split('=')[1];
+                    console.log("row: ", row)
+                    console.log("Property: ", prop);
+                    console.log("valuesIn: ", valuesIn);
+
+
+                    var valuesMid = valuesIn.indexOf('|') > -1 ? valuesIn.split('|') : valuesIn;
+
+
+                    if (valuesMid === valuesIn) {
+                        var values = [];
+                        values.push(valuesIn)
+
+
+                        console.log("values inside check for valuesIn === gmbIn: ", values)
+                    } else {
+                        var values = [...valuesMid];
+                        console.log("values inside else", values)
+                    }
+
+
+                    if (values.length > 1) {
+                        for (var j = 0; j < values.length; j++) {
+                            var item = values[j];
+                            gmbPattern += `
+	   	WHEN REGEXP_MATCH(Page, '((?i).*${prop}=${item}).*') THEN "GMB"`;
+                        }
+                    } else {
+                        gmbPattern += `
+        WHEN REGEXP_MATCH(Page, '((?i).*${prop}=${values[0]}).*') THEN "GMB"`;
+                    }
+
+
+
+
+                } else {
+
+                    var gmbPattern = `Case`;
+                    for (var i = 0; i < gmbArr.length; i++) {
+                        var row = gmbArr[i];
+                        var prop = row.split('=')[0];
+                        var valuesIn = row.split('=')[1];
+                        console.log("row: ", row)
+                        console.log("Property: ", prop);
+                        console.log("valuesIn: ", valuesIn);
+
+
+                        var valuesMid = valuesIn.indexOf('|') > -1 ? valuesIn.split('|') : valuesIn;
+
+
+                        if (valuesMid === valuesIn) {
+                            var values = [];
+                            values.push(valuesIn)
+
+
+                            console.log("values inside check for valuesIn === gmbIn: ", values)
+                        } else {
+                            var values = [...valuesMid];
+                            console.log("values inside else", values)
+                        }
+
+
+                        if (values.length > 1) {
+                            for (var j = 0; j < values.length; j++) {
+                                var item = values[j];
+                                gmbPattern += `
+	   	WHEN REGEXP_MATCH(Page, '((?i).*${prop}=${item}).*') THEN "GMB"`;
+                            }
+                        } else {
+                            gmbPattern += `
+        WHEN REGEXP_MATCH(Page, '((?i).*${prop}=${values[0]}).*') THEN "GMB"`;
+                        }
+
+                       
+
+
+                    }
+                }
+                 gmbPattern += `
+ELSE "Not GMB"
+END`;}
+                var brandPattern = `Case`;
+                brandPattern += `
+        WHEN REGEXP_MATCH(query, '.*${brandIn}.*') THEN "Brand"`;
+
+                brandPattern += `
+ELSE "Not Brand"
+END`;
+
+                console.log(brandPattern);
+
+                $('textarea#root').text(rootLink);
+
+                $('textarea#trending').text(trendingLink);
+$('textarea#pageexplorer').text(pageExplorerLink);
+
+                $('textarea#gmb').text(gmbPattern);
+                $('textarea#brand').text(brandPattern);
+
+            };
+            $("input").on("change", function () {
+
+                update();
+
+            });
+
+        });
+    </script>
+    </div>
+    <style>.hiddenTextarea {
+  position: absolute;
+  opacity: .01;
+  height: 0;
+  overflow: hidden;
+}</style>
