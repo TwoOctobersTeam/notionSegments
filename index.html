@@ -12,13 +12,10 @@
                         <li><strong>Hit the 'Tab' key</strong></li></ol></div>
 
     <div class="elementor-row">
-          <div class="elementor-column elementor-col-100"  data-element_type="column">
-
-    <p><button class="select" type="button" tabindex="4" style="margin-bottom: 1em">Copy Root Code</button> <textarea
-            id="root" class="select hiddenTextarea" readonly="readonly"  rows="1" >	</textarea></p></div>
+          
                       <div class="elementor-column elementor-col-100"  data-element_type="column">
  
-    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Trending Code</button> <textarea
+    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Trending /Root Queries Code</button> <textarea
             id="trending" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
             
             <div class="elementor-column elementor-col-100"  data-element_type="column">
@@ -102,10 +99,6 @@
 
                 var reportId = reportUrl.split('reporting/')[1].split('/page/')[0];
                 console.log(reportId);
-
-                var rootLink =
-                    `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580PT%25EE%2580%2580',root_term,'"%7D'),root_term)`;
-                console.log(rootLink);
 
                 var trendingLink =
                     `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',query ,'"%7D'),query)`;
