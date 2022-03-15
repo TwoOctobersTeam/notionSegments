@@ -15,7 +15,12 @@
           
                       <div class="elementor-column elementor-col-100"  data-element_type="column">
  
-    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Trending /Root Queries Code</button> <textarea
+    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Root Queries Code</button> <textarea
+            id="root" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
+
+	     <div class="elementor-column elementor-col-100"  data-element_type="column">
+ 
+    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Trending Queries Code</button> <textarea
             id="trending" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
             
             <div class="elementor-column elementor-col-100"  data-element_type="column">
@@ -100,8 +105,13 @@
                 var reportId = reportUrl.split('reporting/')[1].split('/page/')[0];
                 console.log(reportId);
 
-                var trendingLink =
+                var rootLink =
                     `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Query ,'"%7D'),Query)`;
+                console.log(trendingLink);
+		    
+		    
+		    var trendingLink =
+                    `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Query ,'"%7D'),'Explore the Selected Page in Page Explorer')`;
                 console.log(trendingLink);
                 var pageExplorerLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),'Explore the selected Page in Page Explorer')`;
 
@@ -218,7 +228,7 @@ END`;
                 console.log(brandPattern);
 
          
-
+$('textarea#root').text(rootLink);
                 $('textarea#trending').text(trendingLink);
 $('textarea#pageexplorer').text(pageExplorerLink);
 
