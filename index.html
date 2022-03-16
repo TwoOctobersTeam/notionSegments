@@ -102,7 +102,7 @@
 let name = $(this).html();
                 $(this).closest('p').find('textarea').select();
                 document.execCommand('copy');
-                $(this).html("✅" + name);
+                $(this).html("✅ " + name);
             });
 
             function update() {
