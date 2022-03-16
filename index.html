@@ -99,10 +99,10 @@
         jQuery(function ($) {
 
             $("button.select").click(function () {
-
+let name = $(this).html();
                 $(this).closest('p').find('textarea').select();
                 document.execCommand('copy');
-                $(this).html("copied!");
+                $(this).html("✅" + name);
             });
 
             function update() {
