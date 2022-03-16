@@ -123,16 +123,16 @@
                 var pageExplorerLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),'Explore the selected Page in Page Explorer')`;
 
                 var fullPathLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',FullPath ,'"%7D'),FullPath)`;
-                    `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Query ,'"%7D'),'Explore the Selected Page in Topic Explorer')`;
+                    
                 console.log(trendingLink);
                 var pageExplorerLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),'Explore the selected Page in Page Explorer')`;
 
               
 
-         
-$('textarea#fullPath').text(rootLink);
+ 		$('textarea#root').text(rootLink);        
+		$('textarea#fullPath').text(fullPathLink);
                 $('textarea#trending').text(trendingLink);
-$('textarea#pageexplorer').text(pageExplorerLink);
+		$('textarea#pageexplorer').text(pageExplorerLink);
 
             };
             $("input").on("change", function () {
