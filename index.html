@@ -17,6 +17,12 @@
  
     <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Root Queries Code</button> <textarea
             id="root" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
+	    
+	    <div class="elementor-column elementor-col-100"  data-element_type="column">
+ 
+    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Page &gt; FullPath</button> <textarea
+            id="fullPath" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
+	    
 
 	     <div class="elementor-column elementor-col-100"  data-element_type="column">
  
@@ -115,125 +121,17 @@
                 console.log(trendingLink);
                 var pageExplorerLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),'Explore the selected Page in Page Explorer')`;
 
-                var gmbIn = $('#gmbField').val() ? $('#gmbField').val().trim() : '';
-                var brandIn = $('#brandField').val() ? $('#brandField').val().trim().toLowerCase() : '';
-if (gmbIn===''){}
-else{
-                var gmbArrIn = gmbIn.indexOf('::') ? gmbIn.split('::') : gmbIn;
-                if (gmbArrIn === gmbIn) {
-                    var gmbArr = [];
-                    gmbArr.push(gmbArrIn)
-                    console.log("gmbArr inside check for gmbArrIn === gmbIn: ", gmbArr)
-                } else {
-                    var gmbArr = [...gmbArrIn];
-                    console.log("gmbArr inside else", gmbArr)
-                }
-                console.log("gmbArr length: ", gmbArr.length);
-                if (gmbArr.length === 1) {
+                var fullPathLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',FullPath ,'"%7D'),FullPath)`;
+                    `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Query ,'"%7D'),'Explore the Selected Page in Topic Explorer')`;
+                console.log(trendingLink);
+                var pageExplorerLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),'Explore the selected Page in Page Explorer')`;
 
-                    var gmbPattern = `Case`;
-
-                    var row = gmbArr[0];
-
-                    var prop = row.split('=')[0];
-                    var valuesIn = row.split('=')[1];
-                    console.log("row: ", row)
-                    console.log("Property: ", prop);
-                    console.log("valuesIn: ", valuesIn);
-
-
-                    var valuesMid = valuesIn.indexOf('|') > -1 ? valuesIn.split('|') : valuesIn;
-
-
-                    if (valuesMid === valuesIn) {
-                        var values = [];
-                        values.push(valuesIn)
-
-
-                        console.log("values inside check for valuesIn === gmbIn: ", values)
-                    } else {
-                        var values = [...valuesMid];
-                        console.log("values inside else", values)
-                    }
-
-
-                    if (values.length > 1) {
-                        for (var j = 0; j < values.length; j++) {
-                            var item = values[j];
-                            gmbPattern += `
-	   	WHEN REGEXP_MATCH(Page, '((?i).*${prop}=${item}).*') THEN "GMB"`;
-                        }
-                    } else {
-                        gmbPattern += `
-        WHEN REGEXP_MATCH(Page, '((?i).*${prop}=${values[0]}).*') THEN "GMB"`;
-                    }
-
-
-
-
-                } else {
-
-                    var gmbPattern = `Case`;
-                    for (var i = 0; i < gmbArr.length; i++) {
-                        var row = gmbArr[i];
-                        var prop = row.split('=')[0];
-                        var valuesIn = row.split('=')[1];
-                        console.log("row: ", row)
-                        console.log("Property: ", prop);
-                        console.log("valuesIn: ", valuesIn);
-
-
-                        var valuesMid = valuesIn.indexOf('|') > -1 ? valuesIn.split('|') : valuesIn;
-
-
-                        if (valuesMid === valuesIn) {
-                            var values = [];
-                            values.push(valuesIn)
-
-
-                            console.log("values inside check for valuesIn === gmbIn: ", values)
-                        } else {
-                            var values = [...valuesMid];
-                            console.log("values inside else", values)
-                        }
-
-
-                        if (values.length > 1) {
-                            for (var j = 0; j < values.length; j++) {
-                                var item = values[j];
-                                gmbPattern += `
-	   	WHEN REGEXP_MATCH(Page, '((?i).*${prop}=${item}).*') THEN "GMB"`;
-                            }
-                        } else {
-                            gmbPattern += `
-        WHEN REGEXP_MATCH(Page, '((?i).*${prop}=${values[0]}).*') THEN "GMB"`;
-                        }
-
-                       
-
-
-                    }
-                }
-                 gmbPattern += `
-ELSE "Not GMB"
-END`;}
-                var brandPattern = `Case`;
-                brandPattern += `
-        WHEN REGEXP_MATCH(query, '.*${brandIn}.*') THEN "Brand"`;
-
-                brandPattern += `
-ELSE "Not Brand"
-END`;
-
-                console.log(brandPattern);
+              
 
          
-$('textarea#root').text(rootLink);
+$('textarea#fullPath').text(rootLink);
                 $('textarea#trending').text(trendingLink);
 $('textarea#pageexplorer').text(pageExplorerLink);
-
-                $('textarea#gmb').text(gmbPattern);
-                $('textarea#brand').text(brandPattern);
 
             };
             $("input").on("change", function () {
