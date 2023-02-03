@@ -71,7 +71,8 @@ textarea {
 
             $("button#buildSegments").click(function () {
 		let segmentPattern = setSegments();
-		    document.getElementById("segmentOutput").innerHTML = segmentPattern;
+		    console.log(segmentPattern)
+		    document.getElementById("segmentOutput").value = segmentPattern;
 		 $(this).closest('p').find('textarea').select();
                 document.execCommand('copy');    
  
@@ -124,7 +125,7 @@ WHEN REGEXP_CONTAINS(FullPath,"${regex}") THEN "${value}"`;
 ELSE "Other"
 END`;
 
- console.log(segmentPattern);     
+  
 return segmentPattern;
 
                
