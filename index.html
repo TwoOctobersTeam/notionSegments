@@ -15,7 +15,7 @@
  <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Case Statement</button> 	
 	
 	<textarea id="segmentOutput" class="select hiddenTextarea" readonly="readonly" rows="1" >
-		
+		  
 		
 	</textarea>
 	
@@ -24,73 +24,7 @@
 	
 	
 	
-		     <h2>How to build Segments using Regular Expressions</h2>
-	     <p>Use the following structure:</p>
-	     <code>Capture Path::Label</code>
-
-	     <p>This uses the FullPath field. Use the following structure:</p>
-<ul>
-	<li>^/string/::Label  - captures all URLs starting with /string/ in the URL</li>
-	<li>^/string/$ ::Label  - (with a ^ at start & a $ at end) captures all URLs = /string/</li>
-	<li>string/::Label  - captures all URLs with string/ in the URL</li>
-	<li>string::Label  - captures all URLs with string in the URL</li>
-	     </ul>
-          <ol id="directions">
-
-        <li><strong>Paste in the New Explorer Data Studio Report URL: (required) <br> <span style="font-size: 0.75em">example:
-                    https://datastudio.google.com/u/0/reporting/xxxxxx-31cb-4xxxx-9acf-xxxxxxxx4847/page/q8oSC/edit</span></strong>
-                <input id="report" tabindex="1" type="text" style="width: 100%; line-height: 2em; padding: 0.5em 0.5 em 0.25em" /></p></li>
-                        <li><strong>Hit the 'Tab' key</strong></li></ol></div>
-
-    <div class="elementor-row">
-          
-                      <div class="elementor-column elementor-col-100"  data-element_type="column">
- 
-    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Root Queries</button> <textarea
-            id="root" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
-	    
-	    <div class="elementor-column elementor-col-100"  data-element_type="column">
- 
-    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy FullPath</button> <textarea
-            id="fullPath" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
-	    
-
-	     <div class="elementor-column elementor-col-100"  data-element_type="column">
- 
-    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Trending Queries</button> <textarea
-            id="trending" class="select hiddenTextarea" readonly="readonly" rows="1"  >	</textarea></p></div>
-            
-            <div class="elementor-column elementor-col-100"  data-element_type="column">
-    
-    <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Trending Pages</button> <textarea
-            id="pageexplorer" class="select hiddenTextarea" readonly="readonly" rows="1" >	</textarea></p></div></div>
-            
-
-              <div class="elementor-row">           <div class="elementor-column elementor-col-100"  data-element_type="column"> 
-     <p><button class="select" type="button" tabindex="8" style="margin-bottom: 1em">Copy Check Serps</button> <textarea
-            id="checkSerps" class="select hiddenTextarea" readonly="readonly" rows="1">HYPERLINK(CONCAT("https://google.com/search?q=",REGEXP_REPLACE(query,' ','+')),"🔎SERPS")</textarea></p>
-
-</div>
-<div class="elementor-column elementor-col-100"  data-element_type="column">
-      
-       
-     <p><button class="select" type="button" tabindex="10" style="margin-bottom: 1em">Copy Image Serps</button> <textarea
-            id="checkQuora" class="select hiddenTextarea" readonly="readonly" rows="1" >HYPERLINK(CONCAT("https://google.com/search?q=",REGEXP_REPLACE(Query,' ','+'),"&tbm=isch"),"🔎Images")</textarea></p>
-       </div>
-
-      <div class="elementor-column elementor-col-100"  data-element_type="column">   
-     <p><button class="select" type="button" tabindex="10" style="margin-bottom: 1em">Copy Quora</button> <textarea
-            id="checkQuora" class="select hiddenTextarea" readonly="readonly" rows="1" >HYPERLINK(CONCAT("https://www.quora.com/search?q=",REGEXP_REPLACE(query,' ','%20')),IMAGE("https://upload.wikimedia.org/wikipedia/commons/2/2c/Quora_icon.png","Q"))</textarea></p>
-
-</div> 
-
-<div class="elementor-column elementor-col-100"  data-element_type="column">   
-     <p><button class="select" type="button" tabindex="9" style="margin-bottom: 1em">Copy Reddit</button> <textarea
-            id="checkReddit" class="select hiddenTextarea" readonly="readonly"  rows="1">HYPERLINK(CONCAT("https://www.reddit.com/search/?q=",REGEXP_REPLACE(query,' ','%20')),IMAGE("https://external-preview.redd.it/iDdntscPf-nfWKqzHRGFmhVxZm4hZgaKe5oyFws-yzA.png?auto=webp&s=38648ef0dc2c3fce76d5e1d8639234d8da0152b2","Q"))</textarea></p>
-
-</div>
-
-</div>
+		  
 
   
 
@@ -99,6 +33,19 @@
         .hidden {
             display: none;
         }
+	    <style> 
+textarea {
+  width: 100%;
+  height: 800px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
+  resize: none;
+}
+</style>
         .elementor-column.elementor-col-100,.elementor-column.elementor-col-50 {padding: 5px 5px 5px 40px!important;display: flex;float: left !important}
 	    .elementor-row {width: 100%; display: block; float: left !important}
 
