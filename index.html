@@ -71,7 +71,7 @@ textarea {
 
             $("button#buildSegments").click(function () {
 		let segmentPattern = setSegments();
-		    document.getElementById("segmentOutput").value = segmentPattern;
+		    document.getElementById("segmentOutput").innerHTML = segmentPattern;
 		 $(this).closest('p').find('textarea').select();
                 document.execCommand('copy');    
  
