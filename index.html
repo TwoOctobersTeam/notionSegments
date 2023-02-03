@@ -89,7 +89,7 @@ textarea {
      
       
       //console.log(data);
-  let data = document.getElementById("segmentIn").value.replace(/\n/g, ",").split(",").filter((x)=>{return x !=='';});
+  let data = document.getElementById("segmentIn").value.replace(/\n/g, ",").split(",").filter((x)=>{return x !=='' && x !=='\t\t';});
       for (let i = 0; i < data.length; i++) {
         let row = data[i];
         
