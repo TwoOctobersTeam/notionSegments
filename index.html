@@ -3,7 +3,38 @@
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script></head>
 <div id="explorerForm">
      <div class="elementor-row">
-         
+
+	
+	<textarea id="segmentIn" placeholder="add the segments you want to filter by below">
+		
+		
+	</textarea>
+	
+	
+	
+ <p><button class="select" type="button" tabindex="5" style="margin-bottom: 1em">Copy Case Statement</button> 	
+	
+	<textarea id="segmentOutput" class="select hiddenTextarea" readonly="readonly" rows="1" >
+		
+		
+	</textarea>
+	
+	     </ul>
+	
+	
+	
+	
+		     <h2>How to build Segments using Regular Expressions</h2>
+	     <p>Use the following structure:</p>
+	     <code>Capture Path::Label</code>
+
+	     <p>This uses the FullPath field. Use the following structure:</p>
+<ul>
+	<li>^/string/::Label  - captures all URLs starting with /string/ in the URL</li>
+	<li>^/string/$ ::Label  - (with a ^ at start & a $ at end) captures all URLs = /string/</li>
+	<li>string/::Label  - captures all URLs with string/ in the URL</li>
+	<li>string::Label  - captures all URLs with string in the URL</li>
+	     </ul>
           <ol id="directions">
 
         <li><strong>Paste in the New Explorer Data Studio Report URL: (required) <br> <span style="font-size: 0.75em">example:
@@ -98,48 +129,69 @@
     <script>
         jQuery(function ($) {
 
-            $("button.select").click(function () {
-let name = $(this).html();
-                $(this).closest('p').find('textarea').select();
-                document.execCommand('copy');
-                $(this).html("✅ " + name);
-            });
+            $("button#buildSegments").click(function () {
+		    setSegmenets();
+		 $(this).closest('p').find('textarea').select();
+                document.execCommand('copy');    
+	function setSegments() {
+  let segmentIn = [];
+    try {
+     
+      
+      //console.log(data);
+  let data = document.getElementById("segmentIn").value.replace(/\n/g, ",").split(",").filter((x)=>{return x !=='';});
+      for (let i = 0; i < data.length; i++) {
+        let row = data[i];
+        
+        segmentIn.push(row);
+      }
+  
 
-            function update() {
+  console.log('segmentIn inside sorting function: ', segmentIn);
+  segmentIn = segmentIn.sort(function (a, b) {
+    let itemA = a.split('::')[0];
+    let itemB = b.split('::')[0];
+    // console.log('a: ', itemA, 'b: ', itemB);
+    if (itemA.match('/') && itemB.match('/')) {
+      if (itemA.split('/').length > itemB.split('/').length) return -1;
+      if (itemA.split('/').length < itemB.split('/').length) return 1;
+    }
+    if (itemA.match('/') && !itemB.match('/')) {
+      return -1;
+    }
+    if (itemA.length > itemB.length) return -1;
+    if (itemA.length < itemB.length) return 1;
+  });
 
-                var reportUrl = $("#report").val() ? $("#report").val().trim() : '';
+  //build segments
+  segmentPattern = `CASE`;
 
-                var reportId = reportUrl.split('reporting/')[1].split('/page/')[0];
-                console.log(reportId);
+  for (let i = 0; i < segmentIn.length; i++) {
+    let row = segmentIn[i];
+    let regexIn = row.split('::')[0];
+    let value = row.split('::')[1];
+    let regexMid = regexIn.replace(/\|/g, '.*|.*');
+    let regex = `.*${regexMid}.*`;
+    segmentPattern += `
+WHEN REGEXP_CONTAINS(FullPath,"${regex}") THEN "${value}"`;
+  }
+  segmentPattern += `
+ELSE "Other"
+END`;
 
-                var rootLink =
-                    `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580PT%25EE%2580%2580',Query ,'"%7D'),Query)`;
-                console.log(trendingLink);
+      
+document.getElementById("segmentOutput").value = segmentPattern;
+
+               
+} catch (e) {
+  console.log(e);
+  var log = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('log');
+  log.getRange(log.getLastRow() + 1, 1, 1, 3).setValues([[new Date(), options.payload, JSON.stringify(e)]]);
+}
+}   
 		    
 		    
-		    var trendingLink =
-                    `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/d6pSC?params=%7B"df845":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Query ,'"%7D'),'Explore the Selected Query in Topic Explorer')`;
-                console.log(trendingLink);
-                var pageExplorerLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),'Explore the selected Page in Page Explorer')`;
-
-                var fullPathLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),FullPath)`;
-                    
-                console.log(trendingLink);
-                var pageExplorerLink = `HYPERLINK(CONCAT('https://datastudio.google.com/reporting/${reportId}/page/p_g7lfzjqrrc?params=%7B"df336":"include%25EE%2580%25800%25EE%2580%2580EQ%25EE%2580%2580',Page ,'"%7D'),'Explore the selected Page in Page Explorer')`;
-
-              
-
- 		$('textarea#root').text(rootLink);        
-		$('textarea#fullPath').text(fullPathLink);
-                $('textarea#trending').text(trendingLink);
-		$('textarea#pageexplorer').text(pageExplorerLink);
-
-            };
-            $("input").on("change", function () {
-
-                update();
-
-            });
+	    });
 
         });
     </script>
