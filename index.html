@@ -70,7 +70,8 @@ textarea {
         jQuery(function ($) {
 
             $("button#buildSegments").click(function () {
-		    setSegments();
+		let segmentPattern = setSegments();
+		    document.getElementById("segmentOutput").value = segmentPattern;
 		 $(this).closest('p').find('textarea').select();
                 document.execCommand('copy');    
  
@@ -123,8 +124,8 @@ WHEN REGEXP_CONTAINS(FullPath,"${regex}") THEN "${value}"`;
 ELSE "Other"
 END`;
 
-      
-document.getElementById("segmentOutput").value = segmentPattern;
+ console.log('segmentPattern');     
+return segmentPattern;
 
                
 } catch (e) {
